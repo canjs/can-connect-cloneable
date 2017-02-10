@@ -1,0 +1,62 @@
+{
+  "name": "can-connect-cloneable",
+  "version": "0.0.1",
+  "description": "Allows you to make mutable clones of can-connected maps and save changes back to the original",
+  "main": "can-connect-cloneable",
+  "scripts": {
+    "preversion": "npm test && npm run build",
+    "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
+    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "testee": "testee test/test.html --browsers firefox",
+    "test": "npm run jshint && npm run testee",
+    "jshint": "jshint ./*.js --config",
+    "release:pre": "npm version prerelease && npm run build && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "build": "node build.js",
+    "document": "documentjs",
+    "develop": "done-serve --static --develop --port 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Bitovi/can-connect-cloneable.git"
+  },
+  "keywords": [
+    "clone",
+    "plugin",
+    "canjs"
+  ],
+  "author": {
+    "name": "Bitovi"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/canjs/can-connect-cloneable/issues"
+  },
+  "homepage": "https://github.com/canjs/can-connect-cloneable",
+  "system": {
+    "configDependencies": [
+      "live-reload"
+    ],
+    "npmAlgorithm": "flat"
+  },
+  "dependencies": {
+    "can-connect": "^1.3.3",
+    "can-fixture": "^1.0.12",
+    "can-list": "^3.0.2",
+    "can-map": "^3.0.4",
+    "can-map-define": "^3.0.4",
+    "can-util": "^3.2.2"
+  },
+  "devDependencies": {
+    "documentjs": "^0.4.2",
+    "jshint": "^2.9.1",
+    "steal": "^1.2.4",
+    "steal-qunit": "^1.0.0",
+    "steal-tools": "^1.1.2",
+    "testee": "^0.3.1",
+    "donejs-cli": "^0.9.4",
+    "done-serve": "^0.2.0"
+  }
+}
