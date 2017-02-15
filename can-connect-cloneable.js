@@ -1,5 +1,6 @@
-// var each = require("can-util/js/each/each");
+var each = require("can-util/js/each/each");
 var deepAssign = require("can-util/js/deep-assign/deep-assign");
+var assign = require("can-util/js/assign/assign");
 var getIdProps = require("can-connect/helpers/get-id-props");
 
 // makes a clone by wiring all of it's properties to read from ._original[prop]
@@ -25,6 +26,15 @@ module.exports = function makeClone(Type) {
 
 	// Specific functions for DefineMap and CanMap
 	if (Type.prototype.hasOwnProperty('_define')) {
+		each(Type.prototype._define.definitions, function(def, prop) {
+			definition[prop] = assign(assign({}, def), {
+				get: def.get || function(lastSet) {
+					return (lastSet !== undefined) ? lastSet : this._original[prop];
+				},
+				serialize: (def.serialize === undefined ? (def.get ? false : true) : def.serialize)
+			});
+		});
+
 		// add a reference to the original
 		deepAssign(definition, {
 			_original: {
@@ -32,6 +42,16 @@ module.exports = function makeClone(Type) {
 			}
 		});
 	} else {
+		definition.define = {};
+		each(Type.prototype.define, function(def, prop) {
+			definition.define[prop] = assign(assign({}, def), {
+				get: def.get || function(lastSet) {
+					return (lastSet !== undefined) ? lastSet : this._original[prop];
+				},
+				serialize: (def.serialize === undefined ? (def.get ? false : true) : def.serialize)
+			});
+		});
+
 		// add a reference to the original
 		deepAssign(definition, {
 			define: {
@@ -42,10 +62,10 @@ module.exports = function makeClone(Type) {
 		});
 	}
 
+	delete definition[idProp];
 	var Clone = Type.extend(definition);
 	Type.prototype.clone = function clone() {
-		var props = this.serialize();
-		delete props[idProp];
+		var props = {};
 		props._original = this;
 		return new Clone(props);
 	};
