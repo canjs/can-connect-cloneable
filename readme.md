@@ -1,6 +1,6 @@
 # can-connect-cloneable
 
-[![Build Status](https://travis-ci.org/Bitovi/can-connect-cloneable.png?branch=master)](https://travis-ci.org/Bitovi/can-connect-cloneable)
+[![Build Status](https://travis-ci.org/canjs/can-connect-cloneable.png?branch=master)](https://travis-ci.org/canjs/can-connect-cloneable)
 
 Allows you to make mutable clones of can-connected maps and save changes back to the original
 
