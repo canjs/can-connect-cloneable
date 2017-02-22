@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Bitovi/can-connect-cloneable.git"
+    "url": "git://github.com/canjs/can-connect-cloneable.git"
   },
   "keywords": [
     "clone",
@@ -51,7 +51,6 @@
     "can-list": "^3.0.2",
     "can-map": "^3.0.4",
     "can-map-define": "^3.0.4",
-    "documentjs": "^0.4.2",
     "jshint": "^2.9.1",
     "steal": "^1.2.4",
     "steal-qunit": "^1.0.0",
