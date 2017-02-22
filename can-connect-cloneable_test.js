@@ -40,12 +40,8 @@ QUnit.module("can-connect-cloneable");
 						return age; 
 					}
 				},
-				name: {
-					value: ""
-				},
-				id: {
-					value: null
-				}
+				name: {},
+				id: {}
 			});
 
 			// create the connection
@@ -118,7 +114,7 @@ QUnit.module("can-connect-cloneable");
 			});
 		});
 
-		QUnit.skip("Property changes from the original push to the clone", function() {
+		QUnit.test("Property changes from the original push to the clone", function() {
 			var map = new (this.CloneableDefineMap)({
 				name: "Kyle",
 				id: 1
@@ -129,7 +125,7 @@ QUnit.module("can-connect-cloneable");
 			QUnit.equal(clone.name, "Justin", "clone's name changes when original's name changes");
 		});
 
-		QUnit.test("Getters/Setters/type transfers to the clone", 6, function(assert) {
+		QUnit.test("Getters/Setters/type transfers to the clone", 5, function(assert) {
 			this.runSetterAssertions = true;
 			var map = new (this.CloneableDefineMap)({
 				name: "Kyle",
@@ -137,7 +133,8 @@ QUnit.module("can-connect-cloneable");
 			});
 			var clone = map.clone();
 
-			// setter runs once for map, twice for clone, and once here = 4x
+			// setter runs once for map, once for clone, and once here = 5x
+			assert.equal(clone.info, "Kyle is 30");
 			clone.age = "32";
 			assert.ok(clone.age === 32, "type applied");
 			assert.equal(clone.info, "Kyle is 32", "getter applied");
@@ -163,9 +160,9 @@ QUnit.module("can-connect-cloneable");
 							}
 							return age; 
 						}
-					}
+					},
+					name: {}
 				},
-				name: "",
 			});
 
 			// create the connection
@@ -238,7 +235,7 @@ QUnit.module("can-connect-cloneable");
 			});
 		});
 
-		QUnit.skip("Property changes from the original push to the clone", function() {
+		QUnit.test("Property changes from the original push to the clone", function() {
 			var map = new (this.CloneableCanMap)({
 				name: "Kyle",
 				id: 1
