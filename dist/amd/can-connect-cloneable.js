@@ -1,4 +1,4 @@
-/*can-connect-cloneable@0.0.1#can-connect-cloneable*/
+/*can-connect-cloneable@0.1.0#can-connect-cloneable*/
 define(function (require, exports, module) {
     var each = require('can-util/js/each');
     var deepAssign = require('can-util/js/deep-assign');

@@ -107,7 +107,7 @@
 	eval("(function() { " + __$source__ + " \n }).call(__$global__);");
 }
 )
-/*can-connect-cloneable@0.0.1#can-connect-cloneable*/
+/*can-connect-cloneable@0.1.0#can-connect-cloneable*/
 define('can-connect-cloneable', function (require, exports, module) {
     var each = require('can-util/js/each/each');
     var deepAssign = require('can-util/js/deep-assign/deep-assign');
