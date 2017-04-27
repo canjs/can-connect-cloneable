@@ -27,9 +27,7 @@
     "plugin",
     "canjs"
   ],
-  "author": {
-    "name": "Bitovi"
-  },
+  "author": "Bitovi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/canjs/can-connect-cloneable/issues"
@@ -58,5 +56,9 @@
     "testee": "^0.3.1",
     "donejs-cli": "^0.9.4",
     "done-serve": "^0.2.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }
