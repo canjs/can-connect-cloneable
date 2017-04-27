@@ -20,7 +20,7 @@ QUnit.module("can-connect-cloneable");
 	  	QUnit.equal(typeof makeCloneable, "function");
 	});
 
-	QUnit.module("DefineMap", {
+	QUnit.module("can-connect-cloneable with DefineMap", {
 		beforeEach: function(assert) {
 			this.runSetterAssertions = false;
 			var self = this;
@@ -140,7 +140,7 @@ QUnit.module("can-connect-cloneable");
 			assert.equal(clone.info, "Kyle is 32", "getter applied");
 		});
 
-	QUnit.module("CanMap", {
+	QUnit.module("can-connect-cloneable with CanMap", {
 		beforeEach: function(assert) {
 			this.runSetterAssertions = false;
 			var self = this;
