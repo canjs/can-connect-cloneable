@@ -5,14 +5,11 @@ require("can-define/list/list");
 var CanMap = require("can-map");
 require("can-map-define");
 require("can-list");
-var Fixture = require("can-fixture");
-var Connect = require("can-connect");
+var fixture = require("can-fixture");
+var connect = require("can-connect");
 var ConnectDataUrl = require("can-connect/data/url/url");
 var ConnectConstructor = require("can-connect/constructor/constructor");
 var ConnectCanMap = require("can-connect/can/map/map");
-
-Fixture("POST /test", { id: 1 });
-Fixture("PUT /test/1", {});
 
 QUnit.module("can-connect-cloneable");
 
@@ -22,6 +19,9 @@ QUnit.module("can-connect-cloneable");
 
 	QUnit.module("can-connect-cloneable with DefineMap", {
 		beforeEach: function(assert) {
+			fixture("POST /test", { id: 1 });
+			fixture("PUT /test/1", {});
+
 			this.runSetterAssertions = false;
 			var self = this;
 			this.CloneableDefineMap = DefineMap.extend({
@@ -45,7 +45,7 @@ QUnit.module("can-connect-cloneable");
 			});
 
 			// create the connection
-			var connection = Connect([
+			var connection = connect([
 				ConnectDataUrl,
 				ConnectConstructor,
 				ConnectCanMap
@@ -142,6 +142,9 @@ QUnit.module("can-connect-cloneable");
 
 	QUnit.module("can-connect-cloneable with CanMap", {
 		beforeEach: function(assert) {
+			fixture("POST /test", { id: 1 });
+			fixture("PUT /test/1", {});
+
 			this.runSetterAssertions = false;
 			var self = this;
 			this.CloneableCanMap = CanMap.extend({
@@ -166,7 +169,7 @@ QUnit.module("can-connect-cloneable");
 			});
 
 			// create the connection
-			var connection = Connect([
+			var connection = connect([
 				ConnectDataUrl,
 				ConnectConstructor,
 				ConnectCanMap,
