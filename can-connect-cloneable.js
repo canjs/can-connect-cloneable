@@ -7,7 +7,7 @@ var getIdProps = require("can-connect/helpers/get-id-props");
 module.exports = function makeClone(Type) {
 	var idProp = getIdProps(Type.connection)[0];
 	var definition = {
-		save() {
+		save: function() {
 			var data = this.serialize();
 			delete data._original;
 
