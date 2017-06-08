@@ -2,7 +2,7 @@
 @parent can-ecosystem
 @package ../package.json
 
-@description Makes mutable clones of [can-connect]ed maps. Changes to the clone save back to the original, and changes to the original propogate to the clone.
+@description Makes mutable clones of [can-connect]’d maps. Changes to the clone save back to the original; likewise, changes to the original propagate to the clone.
 
 @signature `makeCloneable(Type)`
 
@@ -20,19 +20,19 @@ var clone = original.clone();
 clone.name; // -> "Kyle"
 ```
 
-  @param {can-map|can-define/map/map} Type the DefineMap or CanMap you want to make clonable
+  @param {can-map|can-define/map/map} Type The DefineMap or CanMap you want to make clonable
 
 
 @body
 
 ## Use
 
-`can-connect-cloneable` can be used with `[can-define/map/map DefineMap]`s or legacy `[can-map CanMap]`s. To make `Map` instances clonable, include `can-connect-cloneable` and call it with the `Map` constructor as the parameter. This adds a `clone` method to future instances of `Map`.
+`can-connect-cloneable` can be used with `[can-define/map/map DefineMaps]` or legacy `[can-map CanMaps]`. To make `Map` instances clonable, include `can-connect-cloneable` and call it with the `Map` constructor as the parameter. This adds a `clone` method to future instances of `Map`.
 
-An instance and it's clone have a special relationship:
+An instance and its clone have a special relationship:
 
 1. Changes to the original instance propogate automatically to the clone.
-2. Changes to the cloned instance do *not* propogate to the original until you call the clone's `save` method.
+2. Changes to the cloned instance do *not* propogate to the original until you call the clone’s `save` method.
 
 ### Using DefineMap (`[can-define/map/map]`)
 
@@ -67,7 +67,7 @@ var original = new MyDefineMap({ name: "Kyle" });
 var clone = original.clone();
 ```
 
-Make changes to the clone, and save, updating the original:
+Make changes to the clone and save, updating the original:
 
 ```javascript
 // Change name on the clone instance
@@ -85,6 +85,7 @@ clone.name; // -> "Justin"
 ```
 
 Make changes to the original, updating the clone:
+
 ```javascript
 original.name; // -> "Justin"
 clone.name; // -> "Justin"
@@ -138,7 +139,7 @@ var original = new MyCanMap({ name: "Kyle" });
 var clone = original.clone();
 ```
 
-Make changes to the clone, and save, updating the original:
+Make changes to the clone and save, updating the original:
 
 ```javascript
 // Change name on the clone instance
@@ -156,6 +157,7 @@ clone.attr("name"); // -> "Justin"
 ```
 
 Make changes to the original, updating the clone:
+
 ```javascript
 original.attr("name"); // -> "Justin"
 clone.attr("name"); // -> "Justin"
@@ -166,5 +168,4 @@ original.attr("name", "Kyle");
 // The value on the clone changes automatically
 original.attr("name"); // -> "Kyle"
 clone.attr("name"); // -> "Kyle"
-
 ```
