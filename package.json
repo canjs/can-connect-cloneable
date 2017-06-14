@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "can-connect": "^1.5.0-pre.0",
-    "can-util": "^3.2.2"
+    "can-util": "^3.9.0-pre.4"
   },
   "devDependencies": {
     "can-define": "^1.2.0-pre.4",
