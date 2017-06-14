@@ -1,6 +1,6 @@
 {
   "name": "can-connect-cloneable",
-  "version": "0.2.0-pre.0",
+  "version": "0.2.0-pre.1",
   "description": "Allows you to make mutable clones of can-connected maps and save changes back to the original",
   "main": "can-connect-cloneable",
   "scripts": {
