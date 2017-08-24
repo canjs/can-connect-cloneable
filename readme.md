@@ -1,74 +1,28 @@
 # can-connect-cloneable
 
-[![Build Status](https://travis-ci.org/canjs/can-connect-cloneable.png?branch=master)](https://travis-ci.org/canjs/can-connect-cloneable)
+[![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/canjs/can-connect-cloneable/blob/master/LICENSE.md)
+[![npm version](https://badge.fury.io/js/can-connect-cloneable.svg)](https://www.npmjs.com/package/can-connect-cloneable)
+[![Travis build status](https://travis-ci.org/canjs/can-connect-cloneable.svg?branch=master)](https://travis-ci.org/canjs/can-connect-cloneable)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-connect-cloneable?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-connect-cloneable)
+[![Coverage status](https://coveralls.io/repos/github/canjs/can-connect-cloneable/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-connect-cloneable?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-connect-cloneable.svg)](https://greenkeeper.io/)
 
 Allows you to make mutable clones of can-connected maps and save changes back to the original
 
-## Usage
+## Documentation
 
-### ES6 use
+Read the [can-connect-cloneable API docs on CanJS.com](https://canjs.com/doc/can-connect-cloneable.html).
 
-With StealJS, you can import this module directly in a template that is autorendered:
+## Changelog
 
-```js
-import plugin from 'can-connect-cloneable';
-```
-
-### CommonJS use
-
-Use `require` to load `can-connect-cloneable` and everything else
-needed to create a template that uses `can-connect-cloneable`:
-
-```js
-var plugin = require("can-connect-cloneable");
-```
-
-## AMD use
-
-Configure the `can` and `jquery` paths and the `can-connect-cloneable` package:
-
-```html
-<script src="require.js"></script>
-<script>
-	require.config({
-	    paths: {
-	        "jquery": "node_modules/jquery/dist/jquery",
-	        "can": "node_modules/canjs/dist/amd/can"
-	    },
-	    packages: [{
-		    	name: 'can-connect-cloneable',
-		    	location: 'node_modules/can-connect-cloneable/dist/amd',
-		    	main: 'lib/can-connect-cloneable'
-	    }]
-	});
-	require(["main-amd"], function(){});
-</script>
-```
-
-### Standalone use
-
-Load the `global` version of the plugin:
-
-```html
-<script src='./node_modules/can-connect-cloneable/dist/global/can-connect-cloneable.js'></script>
-```
+See the [latest releases on GitHub](https://github.com/canjs/can-connect-cloneable/releases).
 
 ## Contributing
 
-### Making a Build
+The [contribution guide](https://github.com/canjs/can-connect-cloneable/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-To make a build of the distributables into `dist/` in the cloned repository run
+## License
 
-```
-npm install
-node build
-```
+[MIT](https://github.com/canjs/can-connect-cloneable/blob/master/LICENSE.md)
 
-### Running the tests
-
-Tests can run in the browser by opening a webserver and visiting the `test.html` page.
-Automated tests that run the tests from the command line in Firefox can be run with
-
-```
-npm test
-```
