@@ -1,5 +1,6 @@
 @module {function} can-connect-cloneable
-@parent can-ecosystem
+@parent can-data-modeling
+@collection can-ecosystem
 @package ../package.json
 
 @description Makes mutable clones of [can-connect]’d maps. Changes to the clone save back to the original; likewise, changes to the original propagate to the clone.
