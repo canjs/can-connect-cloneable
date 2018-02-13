@@ -10,14 +10,14 @@
 Makes `Type` cloneable by giving its instances a `clone` method.
 
 ```javascript
-var DefineMap = require("can-define/map/map");
-var makeCloneable = require("can-connect-cloneable");
+import DefineMap from "can-define/map/map";
+import makeCloneable from "can-connect-cloneable";
 
-var MyDefineMap = DefineMap.extend({ name: "string" });
+const MyDefineMap = DefineMap.extend({ name: "string" });
 makeCloneable(MyDefineMap);
 
-var original = new MyDefineMap({ name: "Kyle" });
-var clone = original.clone();
+const original = new MyDefineMap({ name: "Kyle" });
+const clone = original.clone();
 clone.name; // -> "Kyle"
 ```
 
@@ -40,15 +40,15 @@ An instance and its clone have a special relationship:
 Apply the mixin:
 
 ```javascript
-var makeCloneable = require("can-connect-cloneable");
-var DefineMap = require("can-define/map/map");
-var connect = require("can-connect");
+import makeCloneable from "can-connect-cloneable";
+import DefineMap from "can-define/map/map";
+import connect from "can-connect";
 
 // Extend DefineMap
-var MyDefineMap = DefineMap.extend({ name: "string" });
+const MyDefineMap = DefineMap.extend({ name: "string" });
 
 // create the connection
-var connection = connect([
+const connection = connect([
     require("can-connect/data/url/url"),
     require("can-connect/constructor/constructor"),
     require("can-connect/can/map/map")
@@ -64,8 +64,8 @@ makeCloneable(MyDefineMap);
 Use the clone method:
 
 ```javascript
-var original = new MyDefineMap({ name: "Kyle" });
-var clone = original.clone();
+const original = new MyDefineMap({ name: "Kyle" });
+const clone = original.clone();
 ```
 
 Make changes to the clone and save, updating the original:
@@ -105,13 +105,13 @@ clone.name; // -> "Kyle"
 Apply the mixin:
 
 ```javascript
-var makeCloneable = require("can-connect-cloneable");
-var CanMap = require("can-map");
+import makeCloneable from "can-connect-cloneable";
+import CanMap from "can-map";
 require("can-map-define");
-var connect = require("can-connect");
+import connect from "can-connect";
 
 // Extend CanMap
-var MyCanMap = CanMap.extend({
+const MyCanMap = CanMap.extend({
   define: {
     name: {
       type: "string"
@@ -120,7 +120,7 @@ var MyCanMap = CanMap.extend({
 });
 
 // create the connection
-var connection = connect([
+const connection = connect([
     require("can-connect/data/url/url"),
     require("can-connect/constructor/constructor"),
     require("can-connect/can/map/map")
@@ -136,8 +136,8 @@ makeCloneable(MyCanMap);
 Use the clone method:
 
 ```javascript
-var original = new MyCanMap({ name: "Kyle" });
-var clone = original.clone();
+const original = new MyCanMap({ name: "Kyle" });
+const clone = original.clone();
 ```
 
 Make changes to the clone and save, updating the original:
