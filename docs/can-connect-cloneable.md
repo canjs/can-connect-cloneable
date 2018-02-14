@@ -13,10 +13,10 @@ Makes `Type` cloneable by giving its instances a `clone` method.
 import DefineMap from "can-define/map/map";
 import makeCloneable from "can-connect-cloneable";
 
-const MyDefineMap = DefineMap.extend({ name: "string" });
-makeCloneable(MyDefineMap);
+const MyDefineMap = DefineMap.extend( { name: "string" } );
+makeCloneable( MyDefineMap );
 
-const original = new MyDefineMap({ name: "Kyle" });
+const original = new MyDefineMap( { name: "Kyle" } );
 const clone = original.clone();
 clone.name; // -> "Kyle"
 ```
@@ -45,26 +45,26 @@ import DefineMap from "can-define/map/map";
 import connect from "can-connect";
 
 // Extend DefineMap
-const MyDefineMap = DefineMap.extend({ name: "string" });
+const MyDefineMap = DefineMap.extend( { name: "string" } );
 
 // create the connection
-const connection = connect([
-	require("can-connect/data/url/url"),
-	require("can-connect/constructor/constructor"),
-	require("can-connect/can/map/map")
-],{
+const connection = connect( [
+	require( "can-connect/data/url/url" ),
+	require( "can-connect/constructor/constructor" ),
+	require( "can-connect/can/map/map" )
+], {
 	Map: MyDefineMap,
 	url: "/api/endpoint"
-});
+} );
 
 // apply the mixin
-makeCloneable(MyDefineMap);
+makeCloneable( MyDefineMap );
 ```
 
 Use the clone method:
 
 ```js
-const original = new MyDefineMap({ name: "Kyle" });
+const original = new MyDefineMap( { name: "Kyle" } );
 const clone = original.clone();
 ```
 
@@ -107,36 +107,36 @@ Apply the mixin:
 ```js
 import makeCloneable from "can-connect-cloneable";
 import CanMap from "can-map";
-require("can-map-define");
+require( "can-map-define" );
 import connect from "can-connect";
 
 // Extend CanMap
-const MyCanMap = CanMap.extend({
+const MyCanMap = CanMap.extend( {
 	define: {
 		name: {
 			type: "string"
 		}
 	}
-});
+} );
 
 // create the connection
-const connection = connect([
-	require("can-connect/data/url/url"),
-	require("can-connect/constructor/constructor"),
-	require("can-connect/can/map/map")
-],{
+const connection = connect( [
+	require( "can-connect/data/url/url" ),
+	require( "can-connect/constructor/constructor" ),
+	require( "can-connect/can/map/map" )
+], {
 	Map: MyCanMap,
 	url: "/api/endpoint"
-});
+} );
 
 // apply the mixin
-makeCloneable(MyCanMap);
+makeCloneable( MyCanMap );
 ```
 
 Use the clone method:
 
 ```js
-const original = new MyCanMap({ name: "Kyle" });
+const original = new MyCanMap( { name: "Kyle" } );
 const clone = original.clone();
 ```
 
@@ -144,29 +144,29 @@ Make changes to the clone and save, updating the original:
 
 ```js
 // Change name on the clone instance
-clone.attr("name", "Justin");
+clone.attr( "name", "Justin" );
 
 // The value on the clone changes, but not the original value
-original.attr("name"); // -> "Kyle"
-clone.attr("name"); // -> "Justin"
+original.attr( "name" ); // -> "Kyle"
+clone.attr( "name" ); // -> "Justin"
 
 // Once the clone is saved, the clone values propogate to the original
 clone.save();
-original.attr("name"); // -> "Justin"
-clone.attr("name"); // -> "Justin"
+original.attr( "name" ); // -> "Justin"
+clone.attr( "name" ); // -> "Justin"
 
 ```
 
 Make changes to the original, updating the clone:
 
 ```js
-original.attr("name"); // -> "Justin"
-clone.attr("name"); // -> "Justin"
+original.attr( "name" ); // -> "Justin"
+clone.attr( "name" ); // -> "Justin"
 
 // Change name on the original instance
-original.attr("name", "Kyle");
+original.attr( "name", "Kyle" );
 
 // The value on the clone changes automatically
-original.attr("name"); // -> "Kyle"
-clone.attr("name"); // -> "Kyle"
+original.attr( "name" ); // -> "Kyle"
+clone.attr( "name" ); // -> "Kyle"
 ```
