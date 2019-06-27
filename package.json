@@ -56,7 +56,7 @@
     "steal": "^1.2.4",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.1.2",
-    "testee": "^0.6.0"
+    "testee": "^0.9.0"
   },
   "directories": {
     "doc": "docs",
