@@ -13,8 +13,8 @@ var ConnectCanMap = require("can-connect/can/map/map");
 
 QUnit.module("can-connect-cloneable");
 
-	QUnit.test("Initialized the plugin", function() {
-	  	QUnit.equal(typeof makeCloneable, "function");
+	QUnit.test("Initialized the plugin", function(assert) {
+	  	assert.equal(typeof makeCloneable, "function");
 	});
 
 	QUnit.module("can-connect-cloneable with DefineMap", {
@@ -63,14 +63,14 @@ QUnit.module("can-connect-cloneable");
 		}
 	});
 
-		QUnit.test("Initialization", function() {
+		QUnit.test("Initialization", function(assert) {
 			var noncloneableMap = new DefineMap({});
 			var cloneableMap = new (this.CloneableDefineMap)({});
 			var clone = cloneableMap.clone();
 
-			QUnit.ok(!noncloneableMap.constructor.prototype.hasOwnProperty("clone"), "base Map does not have a clone method");
-			QUnit.ok(cloneableMap.constructor.prototype.hasOwnProperty("clone"), "cloneableMap has a clone method");
-			QUnit.notEqual(cloneableMap, clone, "Clone is not the same instance");
+			assert.ok(!noncloneableMap.constructor.prototype.hasOwnProperty("clone"), "base Map does not have a clone method");
+			assert.ok(cloneableMap.constructor.prototype.hasOwnProperty("clone"), "cloneableMap has a clone method");
+			assert.notEqual(cloneableMap, clone, "Clone is not the same instance");
 		});
 
 		QUnit.test("Saving an original without an ID does a create", function(assert) {
@@ -81,15 +81,15 @@ QUnit.module("can-connect-cloneable");
 			var clone = map.clone();
 			clone.name = "Justin";
 
-			QUnit.equal(map.name, "Kyle", "original's name is still Kyle");
-			QUnit.equal(clone.name, "Justin", "clone's name is now Justin");
+			assert.equal(map.name, "Kyle", "original's name is still Kyle");
+			assert.equal(clone.name, "Justin", "clone's name is now Justin");
 
 			clone.save().then(function() {
-				QUnit.equal(map.name, "Justin", "original's name changed to Justin");
-				QUnit.equal(clone.name, "Justin", "clone's name is still Justin");
-				QUnit.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
-				QUnit.equal(map.id, 1, "original receives an ID");
-				QUnit.equal(clone.id, undefined, "clone still does not have an ID until saving");
+				assert.equal(map.name, "Justin", "original's name changed to Justin");
+				assert.equal(clone.name, "Justin", "clone's name is still Justin");
+				assert.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
+				assert.equal(map.id, 1, "original receives an ID");
+				assert.equal(clone.id, undefined, "clone still does not have an ID until saving");
 				done();
 			});
 		});
@@ -103,26 +103,26 @@ QUnit.module("can-connect-cloneable");
 			var clone = map.clone();
 			clone.name = "Justin";
 
-			QUnit.equal(map.name, "Kyle", "original's name is still Kyle");
-			QUnit.equal(clone.name, "Justin", "clone's name is now Justin");
+			assert.equal(map.name, "Kyle", "original's name is still Kyle");
+			assert.equal(clone.name, "Justin", "clone's name is now Justin");
 
 			clone.save().then(function() {
-				QUnit.equal(map.name, "Justin", "original's name changed to Justin");
-				QUnit.equal(clone.name, "Justin", "clone's name is still Justin");
-				QUnit.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
+				assert.equal(map.name, "Justin", "original's name changed to Justin");
+				assert.equal(clone.name, "Justin", "clone's name is still Justin");
+				assert.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
 				done();
 			});
 		});
 
-		QUnit.test("Property changes from the original push to the clone", function() {
+		QUnit.test("Property changes from the original push to the clone", function(assert) {
 			var map = new (this.CloneableDefineMap)({
 				name: "Kyle",
 				id: 1
 			});
 			var clone = map.clone();
-			QUnit.equal(clone.name, "Kyle", "clone's name has the value of original");
+			assert.equal(clone.name, "Kyle", "clone's name has the value of original");
 			map.name = "Justin";
-			QUnit.equal(clone.name, "Justin", "clone's name changes when original's name changes");
+			assert.equal(clone.name, "Justin", "clone's name changes when original's name changes");
 		});
 
 		QUnit.test("Getters/Setters/type transfers to the clone", 5, function(assert) {
@@ -192,9 +192,9 @@ QUnit.module("can-connect-cloneable");
 			var cloneableMap = new (this.CloneableCanMap)({});
 			var clone = cloneableMap.clone();
 
-			QUnit.ok(!noncloneableMap.constructor.prototype.hasOwnProperty("clone"), "base Map does not have a clone method");
-			QUnit.ok(cloneableMap.constructor.prototype.hasOwnProperty("clone"), "cloneableMap has a clone method");
-			QUnit.notEqual(cloneableMap, clone, "Clone is not the same instance");
+			assert.ok(!noncloneableMap.constructor.prototype.hasOwnProperty("clone"), "base Map does not have a clone method");
+			assert.ok(cloneableMap.constructor.prototype.hasOwnProperty("clone"), "cloneableMap has a clone method");
+			assert.notEqual(cloneableMap, clone, "Clone is not the same instance");
 		});
 
 		QUnit.test("Cloning an original without an ID does a create", function(assert) {
@@ -205,15 +205,15 @@ QUnit.module("can-connect-cloneable");
 			var clone = map.clone();
 			clone.attr("name", "Justin");
 
-			QUnit.equal(map.attr("name"), "Kyle", "original's name is still Kyle");
-			QUnit.equal(clone.attr("name"), "Justin", "clone's name is now Justin");
+			assert.equal(map.attr("name"), "Kyle", "original's name is still Kyle");
+			assert.equal(clone.attr("name"), "Justin", "clone's name is now Justin");
 
 			clone.save().then(function() {
-				QUnit.equal(map.attr("name"), "Justin", "original's name changed to Justin");
-				QUnit.equal(clone.attr("name"), "Justin", "clone's name is still Justin");
-				QUnit.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
-				QUnit.equal(map.attr("id"), 1, "original receives an ID");
-				QUnit.equal(clone.attr("id"), undefined, "clone still does not have an ID until saving");
+				assert.equal(map.attr("name"), "Justin", "original's name changed to Justin");
+				assert.equal(clone.attr("name"), "Justin", "clone's name is still Justin");
+				assert.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
+				assert.equal(map.attr("id"), 1, "original receives an ID");
+				assert.equal(clone.attr("id"), undefined, "clone still does not have an ID until saving");
 				done();
 			});
 		});
@@ -227,13 +227,13 @@ QUnit.module("can-connect-cloneable");
 			var clone = map.clone();
 			clone.attr("name", "Justin");
 
-			QUnit.equal(map.attr("name"), "Kyle", "original's name is still Kyle");
-			QUnit.equal(clone.attr("name"), "Justin", "clone's name is now Justin");
+			assert.equal(map.attr("name"), "Kyle", "original's name is still Kyle");
+			assert.equal(clone.attr("name"), "Justin", "clone's name is now Justin");
 
 			clone.save().then(function() {
-				QUnit.equal(map.attr("name"), "Justin", "original's name changed to Justin");
-				QUnit.equal(clone.attr("name"), "Justin", "clone's name is still Justin");
-				QUnit.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
+				assert.equal(map.attr("name"), "Justin", "original's name changed to Justin");
+				assert.equal(clone.attr("name"), "Justin", "clone's name is still Justin");
+				assert.ok(!map.hasOwnProperty("_original"), "original does not have the _original attribute");
 				done();
 			});
 		});
@@ -244,9 +244,9 @@ QUnit.module("can-connect-cloneable");
 				id: 1
 			});
 			var clone = map.clone();
-			QUnit.equal(clone.attr("name"), "Kyle", "clone's name has the value of original");
+			assert.equal(clone.attr("name"), "Kyle", "clone's name has the value of original");
 			map.attr("name", "Justin");
-			QUnit.equal(clone.attr("name"), "Justin", "clone's name changes when original's name changes");
+			assert.equal(clone.attr("name"), "Justin", "clone's name changes when original's name changes");
 		});
 
 		QUnit.test("Define plugin configuration transfers to the clone", 5, function(assert) {
