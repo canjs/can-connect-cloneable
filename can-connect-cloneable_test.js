@@ -125,7 +125,8 @@ QUnit.module("can-connect-cloneable");
 			assert.equal(clone.name, "Justin", "clone's name changes when original's name changes");
 		});
 
-		QUnit.test("Getters/Setters/type transfers to the clone", 5, function(assert) {
+		QUnit.test("Getters/Setters/type transfers to the clone", function(assert) {
+			assert.expect(5);
 			this.runSetterAssertions = true;
 			var map = new (this.CloneableDefineMap)({
 				name: "Kyle",
@@ -187,7 +188,7 @@ QUnit.module("can-connect-cloneable");
 		}
 	});
 
-		QUnit.test("Initialization", function() {
+		QUnit.test("Initialization", function(assert) {
 			var noncloneableMap = new CanMap({});
 			var cloneableMap = new (this.CloneableCanMap)({});
 			var clone = cloneableMap.clone();
@@ -238,7 +239,7 @@ QUnit.module("can-connect-cloneable");
 			});
 		});
 
-		QUnit.test("Property changes from the original push to the clone", function() {
+		QUnit.test("Property changes from the original push to the clone", function(assert) {
 			var map = new (this.CloneableCanMap)({
 				name: "Kyle",
 				id: 1
@@ -249,7 +250,8 @@ QUnit.module("can-connect-cloneable");
 			assert.equal(clone.attr("name"), "Justin", "clone's name changes when original's name changes");
 		});
 
-		QUnit.test("Define plugin configuration transfers to the clone", 5, function(assert) {
+		QUnit.test("Define plugin configuration transfers to the clone", function(assert) {
+			assert.expect(5);
 			this.runSetterAssertions = true;
 			var map = new (this.CloneableCanMap)({
 				name: "Kyle",
